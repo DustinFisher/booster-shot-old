@@ -1,0 +1,19 @@
+current directory: /Users/dustin/repos/github/booster-shot/.gems/gems/byebug-8.2.1/ext/byebug
+/Users/dustin/.rbenv/versions/2.3.0/bin/ruby -r ./siteconf20160119-83506-1m0ftw0.rb extconf.rb
+creating Makefile
+
+current directory: /Users/dustin/repos/github/booster-shot/.gems/gems/byebug-8.2.1/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/dustin/repos/github/booster-shot/.gems/gems/byebug-8.2.1/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/dustin/repos/github/booster-shot/.gems/gems/byebug-8.2.1/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20160119-83506-2hmh28/byebug
