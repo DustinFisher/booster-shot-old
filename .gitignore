@@ -19,3 +19,7 @@
 
 *.swp
 .DS_Store
+
+.env
+.gems
+.gems/*
