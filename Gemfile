@@ -8,7 +8,6 @@ gem 'puma'
 gem 'rails', '4.2.5.1'
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'secure_headers', '~> 3.0.0.pre2'
 gem 'sidekiq'
 gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
