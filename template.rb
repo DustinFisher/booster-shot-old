@@ -4,10 +4,10 @@ def go_go_template!
   assert_rails_version
   add_template_repository_to_source_path
 
-  copy_file ".ruby-versions", ".ruby-versions", :force => true
-  copy_file ".rbenv-gemsets", ".rbenv-gemsets", :force => true
-  copy_file ".gitignore", ".gitignore", :force => true
-  copy_file ".rubocop.yml", ".rubocop.yml", :force => true
+  copy_file "ruby-versions", ".ruby-versions", :force => true
+  copy_file "rbenv-gemsets", ".rbenv-gemsets", :force => true
+  copy_file "gitignore", ".gitignore", :force => true
+  copy_file "rubocop.yml", ".rubocop.yml", :force => true
   copy_file "Gemfile", "Gemfile", :force => true
 
   apply "app/template.rb"
