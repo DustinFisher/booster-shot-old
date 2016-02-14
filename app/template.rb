@@ -1,4 +1,4 @@
-copy_file "app/assets/stylesheets/bootstrap_and_overrides.css.scss"
+copy_file "app/assets/stylesheets/bootstrap_and_overrides.scss"
 copy_file "app/assets/stylesheets/application.css.scss"
 remove_file "app/assets/stylesheets/application.css"
 
