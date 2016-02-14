@@ -6,9 +6,24 @@ def setup!
     run  "gem install bundler --no-document --conservative"
     run  "rbenv rehash" if rbenv_installed?
     run  "bundle install"
-    run  "rbenv rehash" if rbenv_installed?
     run  "rails generate devise:install"
     run  "rails generate devise User"
+    copy "example.env"
+    copy "config/database.example.yml"
+    test_local_env_contains_required_keys
+    run  "bin/rake db:create:all"
+    run  "bin/rake db:migrate"
+    run  "bin/rake db:seed"
+    run  "pre-commit install" if pre_commit_available?
+
+
+
+
+    test "ruby -v" => ruby_version
+    run  "gem install bundler --no-document --conservative"
+    run  "rbenv rehash" if rbenv_installed?
+    run  "bundle install"
+    run  "rbenv rehash" if rbenv_installed?
     copy "example.env"
     copy "config/database.example.yml"
     test_local_env_contains_required_keys
