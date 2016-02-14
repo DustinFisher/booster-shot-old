@@ -25,7 +25,7 @@ def go_go_template!
   run_with_clean_bundler_env "bin/setup"
   generate_spring_binstubs
 
-  run_with_clean_bundler_env "bundle binstubs #{binstubs.join(' ')}"
+  run_with_clean_bundler_env "bundle binstubs"
 end
 
 def assert_rails_version
