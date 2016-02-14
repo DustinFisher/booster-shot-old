@@ -71,4 +71,9 @@ def run_with_clean_bundler_env(cmd)
   Bundler.with_clean_env { run(cmd) }
 end
 
+def preexisting_git_repo?
+  @preexisting_git_repo ||= (File.exist?(".git") || :nope)
+  @preexisting_git_repo == true
+end
+
 go_go_template!
