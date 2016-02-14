@@ -1,6 +1,6 @@
 RAILS_REQUIREMENT = "~> 4.2.0"
 
-def go_go_template
+def go_go_template!
   assert_rails_version
   add_template_repository_to_source_path
 
@@ -10,10 +10,17 @@ def go_go_template
   copy_file ".rubocop.yml", ".rubocop.yml", :force => true
   copy_file "Gemfile", "Gemfile", :force => true
 
+  apply "app/template.rb"
+  apply "bin/template.rb"
   apply "config/template.rb"
 
   git :init unless preexisting_git_repo?
   empty_directory ".git/safe"
+
+  run_with_clean_bundler_env "bin/setup"
+  generate_spring_binstubs
+
+  run_with_clean_bundler_env "bundle binstubs #{binstubs.join(' ')}"
 end
 
 def assert_rails_version
@@ -46,3 +53,10 @@ def add_template_repository_to_source_path
     source_paths.unshift(File.dirname(__FILE__))
   end
 end
+
+def run_with_clean_bundler_env(cmd)
+  return run(cmd) unless defined?(Bundler)
+  Bundler.with_clean_env { run(cmd) }
+end
+
+go_go_template!
