@@ -2,13 +2,18 @@ RAILS_REQUIREMENT = "~> 4.2.0"
 
 def go_go_template!
   assert_rails_version
+  assert_postgresql
   add_template_repository_to_source_path
 
-  copy_file "ruby-versions", ".ruby-versions", :force => true
+  template "Gemfile.tt", :force => true
+
+  remove_file "README.rdoc"
+
+  template "example.env.tt"
+  copy_file "ruby-version", ".ruby-version", :force => true
   copy_file "rbenv-gemsets", ".rbenv-gemsets", :force => true
   copy_file "gitignore", ".gitignore", :force => true
   copy_file "rubocop.yml", ".rubocop.yml", :force => true
-  copy_file "Gemfile", "Gemfile", :force => true
 
   apply "app/template.rb"
   apply "bin/template.rb"
@@ -31,6 +36,13 @@ def assert_rails_version
   prompt = "This template requires Rails #{RAILS_REQUIREMENT}. "\
            "You are using #{rails_version}. Continue anyway?"
   exit 1 if no?(prompt)
+end
+
+def assert_postgresql
+  return if IO.read("Gemfile") =~ /^\s*gem ['"]pg['"]/
+  fail Rails::Generators::Error,
+       "This template requires PostgreSQL, "\
+       "but the pg gem isn’t present in your Gemfile."
 end
 
 require "fileutils"
