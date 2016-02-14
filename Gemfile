@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
+gem 'dotenv'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'puma'
 gem 'rails', '4.2.5.1'
 gem 'sass-rails', '~> 5.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sidekiq'
 gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
@@ -34,4 +34,8 @@ end
 
 group :test do
   gem 'database_cleaner'
+end
+
+group :doc do
+  gem 'sdoc', '~> 0.4.0'
 end

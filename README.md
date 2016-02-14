@@ -4,6 +4,16 @@ This is a base rails application starting point. There are always a base set
 of gems and other things I install when starting a new project. This helps
 me cut down on the repetition.
 
+To generate a Rails application using this template, pass the `-m` option to `rails new`, like this:
+
+```
+rails new blog \
+  -d postgresql \
+  -m https://raw.githubusercontent.com/dustinfisher/booster-shot/master/template.rb
+```
+
+
+
 ## What's Included
 * [Devise](https://github.com/plataformatec/devise) for user authentication
 * [Puma](https://github.com/puma/puma) for the webserver
