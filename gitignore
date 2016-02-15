@@ -23,3 +23,5 @@
 .env
 .gems
 .gems/*
+
+config/database.yml

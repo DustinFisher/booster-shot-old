@@ -10,7 +10,7 @@ def go_go_template!
   remove_file "README.rdoc"
 
   template "example.env.tt"
-  copy_file "ruby-version", ".ruby-version", :force => true
+  copy_file "ruby-version.tt", ".ruby-version", :force => true
   copy_file "rbenv-gemsets", ".rbenv-gemsets", :force => true
   copy_file "gitignore", ".gitignore", :force => true
   copy_file "rubocop.yml", ".rubocop.yml", :force => true
