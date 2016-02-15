@@ -1,5 +1,5 @@
 - flash.each do |type, message|
-  .alert = bootstrap_flash_class(type) fade in
+  div class=(bootstrap_flash_class(type))
   = message
   button.close[type="button" data-dismiss="alert" aria-label="Close"]
     span[aria-hidden="true"]

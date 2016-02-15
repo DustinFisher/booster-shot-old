@@ -10,3 +10,9 @@ remove_file "app/views/layouts/application.html.erb"
 copy_file   "app/views/layouts/application.slim", :force => true
 copy_file   "app/views/shared/_flash.slim"
 copy_file   "app/views/static_pages/index.slim"
+copy_file   "app/views/devise/registrations/edit.html.erb"
+copy_file   "app/views/devise/registrations/new.html.erb"
+copy_file   "app/views/devise/sessions/new.html.erb"
+copy_file   "app/views/devise/unlocks/new.html.erb"
+copy_file   "app/views/devise/passwords/new.html.erb"
+
