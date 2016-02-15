@@ -29,6 +29,13 @@ def go_go_template!
     brakeman bundler-audit
   )
   run_with_clean_bundler_env "bundle binstubs #{binstubs.join(' ')}"
+
+
+  unless preexisting_git_repo?
+    git :add => "-A ."
+    git :commit => "-n -m 'Intializing a new project'"
+    git :checkout => "-b development"
+  end
 end
 
 def assert_rails_version
