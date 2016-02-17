@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem "pg"<%= gemfile_requirement("pg") || ', "~> 0.18"' %>
@@ -15,27 +15,26 @@ gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 
-group :development, :test do
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem 'byebug'
-  gem 'capybara'
-  gem 'dotenv-rails'
-  gem 'factory_girl_rails'
-  gem 'rspec-given'
-  gem 'rspec-rails'
-  gem 'spring'
-end
-
 group :development do
+  gem 'annotate'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'brakeman', :require => false
   gem 'bundler-audit', :require => false
+  gem 'byebug'
+  gem 'letter_opener'
   gem 'rubocop', require: false
+  gem 'spring'
   gem 'web-console', '~> 2.0'
+  gem 'xray-rails'
 end
 
 group :test do
+  gem 'capybara'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'rspec-given'
+  gem 'rspec-rails'
 end
 
 group :doc do

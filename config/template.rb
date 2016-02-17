@@ -7,3 +7,5 @@ gsub_file "config/routes.rb", /  # root 'welcome#index'/ do
 end
 
 copy_file "config/initializers/secret_token.rb"
+
+apply "config/environments/development.rb"
