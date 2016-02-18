@@ -18,12 +18,12 @@ def go_go_template!
   apply "app/template.rb"
   apply "bin/template.rb"
   apply "config/template.rb"
-  apply "spec/template.rb"
 
   git :init unless preexisting_git_repo?
   empty_directory ".git/safe"
 
   run_with_clean_bundler_env "bin/setup"
+  apply "spec/template.rb"
   generate_spring_binstubs
 
   binstubs = %w(
