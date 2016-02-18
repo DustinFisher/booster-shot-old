@@ -10,6 +10,7 @@ def setup!
     test_local_env_contains_required_keys
     run  "rails generate devise:install"
     run  "rails generate devise User"
+    run  "rails generate simple_form:install --bootstrap"
     run  "bin/rake db:create:all"
     run  "bin/rake db:migrate"
     run  "bin/rake db:seed"
