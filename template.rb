@@ -24,6 +24,7 @@ def go_go_template!
 
   run_with_clean_bundler_env "bin/setup"
   apply "spec/template.rb"
+  run_with_clean_bundler_env "rails generate simple_form:install --bootstrap"
   generate_spring_binstubs
 
   binstubs = %w(

@@ -26,6 +26,7 @@ group :development do
   gem 'byebug'
   gem 'letter_opener'
   gem 'rubocop', require: false
+  gem 'ruby-growl'
   gem 'spring'
   gem 'web-console', '~> 2.0'
   gem 'xray-rails'
