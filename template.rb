@@ -24,6 +24,7 @@ def go_go_template!
 
   run_with_clean_bundler_env "bin/setup"
   apply "spec/template.rb"
+  add_basic_roles
   run_with_clean_bundler_env "rails generate simple_form:install --bootstrap"
   generate_spring_binstubs
 
@@ -92,6 +93,20 @@ def gemfile_requirement(name)
   @original_gemfile ||= IO.read("Gemfile")
   req = @original_gemfile[/gem\s+['"]#{name}['"]\s*(,[><~= \t\d\.\w'"]*).*$/, 1]
   req && req.gsub("'", %(")).strip.sub(/^,\s*"/, ', "')
+end
+
+def add_basic_roles
+  insert_into_file "app/models/user.rb",
+                   :after => /class User.*\n/ do
+"
+  enum role: [:user, :admin]
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :user
+  end\n
+"
+  end
 end
 
 go_go_template!

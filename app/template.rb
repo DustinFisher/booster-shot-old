@@ -18,3 +18,7 @@ copy_file   "app/views/devise/passwords/new.slim"
 copy_file   "app/views/devise/passwords/edit.slim"
 copy_file   "app/views/devise/shared/_links.slim"
 
+insert_into_file "app/controllers/application_controller.rb",
+                 :after => /class ApplicationController.*\n/ do
+  "  include Pundit\n"
+end
