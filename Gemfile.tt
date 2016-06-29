@@ -9,6 +9,9 @@ gem "pg"<%= gemfile_requirement("pg") || ', "~> 0.18"' %>
 gem 'puma'
 gem 'pundit'
 gem 'rails', '4.2.5.1'
+<% if add_react? -%>
+  gem "react_on_rails", "~> 5"
+<% end -%>
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
 gem 'simple_form'

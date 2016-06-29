@@ -38,8 +38,17 @@ def go_go_template!
   unless preexisting_git_repo?
     git :add => "-A ."
     git :commit => "-n -m 'Intializing a new project'"
+    setup_react if add_react?
     git :checkout => "-b development"
   end
+end
+
+def setup_react
+  run_with_clean_bundler_env "rails generate react_on_rails:install"
+  run_with_clean_bundler_env "bundle && npm install"
+  run_with_clean_bundler_env "gem install foreman"
+  git :add => "-A ."
+  git :commit => "-n -m 'Adding react on rails'"
 end
 
 def assert_rails_version
@@ -108,6 +117,19 @@ def add_basic_roles
   end\n
 "
   end
+end
+
+def ask_with_default(question, color, default)
+  return default unless $stdin.tty?
+  question = (question.split("?") << " [#{default}]?").join
+  answer = ask(question, color)
+  answer.to_s.strip.empty? ? default : answer
+end
+
+def add_react?
+  return @add_react if defined?(@add_react)
+  @add_react = \
+    ask_with_default("Use React on Rails?", :blue, "no") =~ /^y(es)?/i
 end
 
 go_go_template!
