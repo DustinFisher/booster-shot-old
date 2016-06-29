@@ -44,6 +44,7 @@ def go_go_template!
 end
 
 def setup_react
+  run "spring stop"
   run "rails generate react_on_rails:install"
   run "bundle && npm install"
   run "gem install foreman"
