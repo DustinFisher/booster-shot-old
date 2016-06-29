@@ -44,9 +44,9 @@ def go_go_template!
 end
 
 def setup_react
-  run_with_clean_bundler_env "rails generate react_on_rails:install"
-  run_with_clean_bundler_env "bundle && npm install"
-  run_with_clean_bundler_env "gem install foreman"
+  run "rails generate react_on_rails:install"
+  run "bundle && npm install"
+  run "gem install foreman"
   git :add => "-A ."
   git :commit => "-n -m 'Adding react on rails'"
 end
