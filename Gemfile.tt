@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2.1'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.0'
@@ -8,9 +8,9 @@ gem 'jquery-rails'
 gem "pg"<%= gemfile_requirement("pg") || ', "~> 0.18"' %>
 gem 'puma'
 gem 'pundit'
-gem 'rails', '4.2.5.1'
+gem 'rails', '5.0.0'
 <% if add_react? -%>
-  gem "react_on_rails", "~> 5"
+  gem "react_on_rails", "~> 6"
 <% end -%>
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
@@ -33,7 +33,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'ruby-growl'
   gem 'spring'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 3.3.0'
   gem 'xray-rails'
 end
 
