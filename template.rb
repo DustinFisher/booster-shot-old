@@ -1,4 +1,4 @@
-RAILS_REQUIREMENT = "~> 4.2.0"
+RAILS_REQUIREMENT = "~> 5.0.0"
 
 def go_go_template!
   assert_rails_version
