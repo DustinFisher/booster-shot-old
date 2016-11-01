@@ -10,3 +10,5 @@ end
 copy_file "config/initializers/secret_token.rb"
 
 apply "config/environments/development.rb"
+
+copy_file "config/environments/test.rb", :force => true
