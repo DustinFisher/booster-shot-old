@@ -12,6 +12,7 @@ def setup!
     run  "rails g devise User"
     run  "rails g migration AddRoleToUsers role:integer"
     run  "rails g pundit:install"
+    run  "rails g migration add_confirmable_to_users confirmation_token:string:uniq:index confirmed_at:datetime confirmation_sent_at:datetime"
     run  "bin/rake db:create:all"
     run  "bin/rake db:migrate"
     run  "bin/rake db:seed"
