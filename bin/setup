@@ -16,6 +16,7 @@ def setup!
     run  "bin/rake db:create:all"
     run  "bin/rake db:migrate"
     run  "bin/rake db:seed"
+    run  "bin/rake db:migrate RAILS_ENV=test"
     run  "annotate"
     run  "rails g rspec:install"
     run  "pre-commit install" if pre_commit_available?
