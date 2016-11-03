@@ -123,12 +123,10 @@ def add_basic_roles
 end
 
 def add_devise_confirmable
-  insert_into_file "app/models/user.rb",
-                   :after => /:validatable/ do
-"
-, \n
-         :confirmable \n
-"
+  gsub_file "app/models/user.rb", /:validatable/ do
+    ":validatable,\n
+         :confirmable,"
+
   end
 
   gsub_file "config/initializers/devise.rb", /config\.reconfirmable = true/ do
