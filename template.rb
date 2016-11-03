@@ -20,9 +20,6 @@ def go_go_template!
   apply "config/template.rb"
   apply "lib/template.rb"
 
-  gsub_file "config/initializers/devise.rb", /config\.reconfirmable = true/ do
-    "config.reconfirmable = false"
-  end
 
   git :init unless preexisting_git_repo?
   empty_directory ".git/safe"
@@ -30,7 +27,7 @@ def go_go_template!
   run_with_clean_bundler_env "bin/setup"
   apply "spec/template.rb"
   add_basic_roles
-  add_devise_confirmable_to_users
+  add_devise_confirmable
   run_with_clean_bundler_env "rails generate simple_form:install --bootstrap"
   generate_spring_binstubs
 
@@ -125,7 +122,7 @@ def add_basic_roles
   end
 end
 
-def add_devise_confirmable_to_users
+def add_devise_confirmable
   insert_into_file "app/models/user.rb",
                    :after => /:validatable/ do
 "
@@ -133,6 +130,11 @@ def add_devise_confirmable_to_users
          :confirmable \n
 "
   end
+
+  gsub_file "config/initializers/devise.rb", /config\.reconfirmable = true/ do
+    "config.reconfirmable = false"
+  end
+
 end
 
 def ask_with_default(question, color, default)
