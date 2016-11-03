@@ -124,8 +124,8 @@ end
 
 def add_devise_confirmable
   gsub_file "app/models/user.rb", /:validatable/ do
-    ":validatable,\n
-         :confirmable,"
+    ":validatable,
+         :confirmable"
 
   end
 
